@@ -30,7 +30,9 @@ class App extends React.Component {
           <ValidationBanner textLength={this.state.inputText.length} />
           <input type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
-          {charList}
+          <div className="char-list">
+            {charList}
+          </div>
         </div>
         <Instructions />
       </div>
