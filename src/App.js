@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import ValidationBanner from './ValidationBanner';
 import Instructions from './Instructions';
 import CharBox from './CharBox';
@@ -20,7 +21,7 @@ class App extends React.Component {
   render() {
 
     const charList = this.state.inputText.split('').map(char => (
-      <CharBox char={char} />
+      <CharBox key={uuidv4()} char={char} />
     ));
 
     return (
