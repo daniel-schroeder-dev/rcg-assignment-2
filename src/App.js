@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="app__assignment-container">
-          <ValidationBanner />
+          <ValidationBanner textLength={this.state.inputText.length} />
           <input type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
         </div>
