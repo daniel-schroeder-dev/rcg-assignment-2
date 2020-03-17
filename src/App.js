@@ -10,17 +10,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputText: '',
+      inputText: [],
     };
   }
 
   handleInputTextChange = e => {
-    this.setState({ inputText: e.target.value });
+    const char = e.target.value.split('').pop();
+    this.setState((state, props) => {
+      state.inputText.push(char);
+      return state;
+    });
   };
 
   render() {
 
-    const charList = this.state.inputText.split('').map(char => (
+    const charList = this.state.inputText.map(char => (
       <CharBox key={uuidv4()} char={char} />
     ));
 
@@ -28,7 +32,7 @@ class App extends React.Component {
       <div className="app">
         <div className="app__assignment-container">
           <ValidationBanner textLength={this.state.inputText.length} />
-          <input className="app__text-input" type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
+          <input className="app__text-input" type="text" value={this.state.inputText.join('')} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
           <div className="char-list">
             {charList}
