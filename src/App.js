@@ -1,4 +1,5 @@
 import React from 'react';
+import ValidationBanner from './ValidationBanner';
 import Instructions from './Instructions';
 import './App.css';
 
@@ -19,6 +20,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="app__assignment-container">
+          <ValidationBanner />
           <input type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
         </div>
