@@ -1,0 +1,13 @@
+.instructions {
+  border-top: 1px solid #ababab;
+  margin-top: 24px;
+}
+
+.instructions__list {
+  max-width: 800px;
+}
+
+.instructions__list li {
+  margin-top: 8px;
+  line-height: 20px;
+}
