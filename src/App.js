@@ -5,7 +5,9 @@ import './App.css';
 function App() {
   return (
     <div className="app">
-      <input type="text" />
+      <div className="app__assignment-container">
+        <input type="text" />
+      </div>
       <Instructions />
     </div>
   );
