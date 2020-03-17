@@ -15,16 +15,28 @@ class App extends React.Component {
   }
 
   handleInputTextChange = e => {
-    const text = e.target.value;
+    
+    const newInputText = e.target.value;
+    const oldInputText = this.formatInputText();
+
     this.setState((state, props) => {
-      if (text.length < this.formatInputText().length) {
-        state.inputText.pop();
+
+      const modifiedIndex = oldInputText.split('').findIndex((c, i) => c !== newInputText[i]);
+
+      if (newInputText.length < oldInputText.length) {
+        state.inputText.splice(modifiedIndex, 1);
+      } else if (newInputText.length > oldInputText.length && modifiedIndex > -1) {
+        const char = newInputText.split('')[modifiedIndex];
+        state.inputText.splice(modifiedIndex, 0, { char: char, uuid: uuidv4() });
       } else {
-        const char = text.split('').pop();
+        const char = newInputText.split('').pop();
         state.inputText.push({ char: char, uuid: uuidv4() });
       }
+      
       return state;
+ 
     });
+  
   };
 
   formatInputText = () => {
@@ -32,10 +44,10 @@ class App extends React.Component {
   };
 
   handleRemoveChar = uuid => {
-    // this.setState((state, props) => {
-    //   state.inputText = state.inputText.filter(text => text.uuid !== uuid);
-    //   return state;
-    // });
+    this.setState((state, props) => {
+      state.inputText = state.inputText.filter(text => text.uuid !== uuid);
+      return state;
+    });
   };
 
   render() {
