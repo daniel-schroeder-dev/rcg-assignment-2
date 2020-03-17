@@ -28,7 +28,7 @@ class App extends React.Component {
       <div className="app">
         <div className="app__assignment-container">
           <ValidationBanner textLength={this.state.inputText.length} />
-          <input type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
+          <input className="app__text-input" type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
           <div className="char-list">
             {charList}
