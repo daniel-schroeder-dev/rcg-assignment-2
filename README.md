@@ -2,7 +2,7 @@
 
 ## About
 
-This is the second assignment from the course [React The Complete Guide](https://www.udemy.com/course/react-the-complete-guide-incl-redux).
+This is the second assignment from the course [React The Complete Guide](https://www.udemy.com/course/react-the-complete-guide-incl-redux). A text input is provided and when the user enters characters, boxes representing the characters appear. Click the boxes to remove characters from the input.
 
 ## Assignment
 
