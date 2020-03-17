@@ -14,6 +14,15 @@ class App extends React.Component {
     };
   }
 
+  /*
+  *   There seem to be three situations to account for when the user
+  *   is interacting with the input text:
+  *
+  *   1. If they add an item to the end of the input
+  *   2. If the delete an item from anywhere in the input
+  *   3. If they add an item anywhere in the input besides the end
+  *
+  */
   handleInputTextChange = e => {
     
     const newInputText = e.target.value;
