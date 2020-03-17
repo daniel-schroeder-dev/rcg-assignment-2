@@ -18,13 +18,18 @@ class App extends React.Component {
   };
 
   render() {
+
+    const charList = this.state.inputText.split('').map(char => (
+      <CharBox char={char} />
+    ));
+
     return (
       <div className="app">
         <div className="app__assignment-container">
           <ValidationBanner textLength={this.state.inputText.length} />
           <input type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
-          <CharBox />
+          {charList}
         </div>
         <Instructions />
       </div>
