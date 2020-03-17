@@ -7,7 +7,7 @@ function Instructions(props) {
       <h2>About</h2>
 
       <p>This is the second assignment from the course <a href="https://www.udemy.com/course/react-the-complete-guide-incl-redux">React The Complete Guide</a>.</p>
-
+      <p>Enter characters in the text input, and boxes representing the characters will appear. Click the boxes to remove characters from the input.</p>
       <h3>Assignment</h3>
 
       <ol className="instructions__list">
