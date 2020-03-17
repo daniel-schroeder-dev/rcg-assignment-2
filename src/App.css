@@ -6,6 +6,11 @@
   padding: 24px;
 }
 
+.app__page-title {
+  text-align: center;
+  text-shadow: 2px 2px 2px #ababab;
+}
+
 .app__assignment-container {
   max-width: 1200px;
   padding: 24px;
@@ -19,9 +24,11 @@
 .char-list {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 6px;
 }
 
 .app__text-input {
   width: 400px;
   padding: 4px;
+  margin: 8px 0;
 }

@@ -67,6 +67,7 @@ class App extends React.Component {
 
     return (
       <div className="app">
+        <h1 className="app__page-title">Assignment Two - React Complete Guide</h1>
         <div className="app__assignment-container">
           <ValidationBanner textLength={this.state.inputText.length} />
           <input className="app__text-input" type="text" value={this.formatInputText()} onChange={this.handleInputTextChange} />
