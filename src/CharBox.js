@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import './CharBox.css';
 
 function CharBox(props) {
+
+  function handleRemoveChar(e) {
+    props.handleRemoveChar(props.uuid);
+  }
+
   return (
-    <div className="char-box">
+    <div className="char-box" onClick={handleRemoveChar}>
       <p>{props.char}</p>
     </div>
   );
@@ -12,6 +17,7 @@ function CharBox(props) {
 
 CharBox.propTypes = {
   char: PropTypes.string.isRequired,
+  handleRemoveChar: PropTypes.func.isRequired,
 };
 
 export default CharBox;

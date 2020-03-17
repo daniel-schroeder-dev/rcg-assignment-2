@@ -26,10 +26,14 @@ class App extends React.Component {
     return this.state.inputText.map(text => text.char).join('');
   };
 
+  handleRemoveChar = uuid => {
+    console.log(uuid);
+  };
+
   render() {
 
     const charList = this.state.inputText.map(text => (
-      <CharBox key={text.uuid} char={text.char} uuid={text.uuid} />
+      <CharBox key={text.uuid} char={text.char} uuid={text.uuid} handleRemoveChar={this.handleRemoveChar} />
     ));
 
     return (
