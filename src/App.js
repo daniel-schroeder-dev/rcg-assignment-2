@@ -17,22 +17,26 @@ class App extends React.Component {
   handleInputTextChange = e => {
     const char = e.target.value.split('').pop();
     this.setState((state, props) => {
-      state.inputText.push(char);
+      state.inputText.push({ char: char, uuid: uuidv4() });
       return state;
     });
   };
 
+  formatInputText = () => {
+    return this.state.inputText.map(text => text.char).join('');
+  };
+
   render() {
 
-    const charList = this.state.inputText.map(char => (
-      <CharBox key={uuidv4()} char={char} />
+    const charList = this.state.inputText.map(text => (
+      <CharBox key={text.uuid} char={text.char} uuid={text.uuid} />
     ));
 
     return (
       <div className="app">
         <div className="app__assignment-container">
           <ValidationBanner textLength={this.state.inputText.length} />
-          <input className="app__text-input" type="text" value={this.state.inputText.join('')} onChange={this.handleInputTextChange} />
+          <input className="app__text-input" type="text" value={this.formatInputText()} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
           <div className="char-list">
             {charList}
