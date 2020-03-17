@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ValidationBanner.css';
 
+const MIN_TEXT_LENGTH = 5;
+
 function ValidationBanner(props) {
   return (
     <div className="validation-banner">
-      Text Too Something
+      Text {props.textLength >= MIN_TEXT_LENGTH ? 'long enough' : 'too short'}
     </div>
   );
 }
