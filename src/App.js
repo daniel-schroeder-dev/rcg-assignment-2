@@ -15,11 +15,7 @@ class App extends React.Component {
   }
 
   handleInputTextChange = e => {
-    const text = e.target.value;
-    this.setState((state, props) => {
-      state.inputText = text;
-      return state;
-    });
+    this.setState({ inputText: e.target.value });
   };
 
   handleRemoveChar = i => {
