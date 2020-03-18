@@ -19,12 +19,10 @@ class App extends React.Component {
   };
 
   handleRemoveChar = i => {
-    this.setState((state, props) => {
-      state.inputText = state.inputText.split('')
-      state.inputText.splice(i, 1);
-      state.inputText = state.inputText.join('');
-      return state;
-    });
+    let inputText = this.state.inputText.split('')
+    inputText.splice(i, 1);
+    inputText = inputText.join('');
+    this.setState({ inputText });
   };
 
   render() {
