@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputText: [],
+      inputText: '',
     };
   }
 
@@ -23,46 +23,54 @@ class App extends React.Component {
   *   3. If they add an item anywhere in the input besides the end
   *
   */
-  handleInputTextChange = e => {
+  // handleInputTextChange = e => {
     
-    const newInputText = e.target.value;
-    const oldInputText = this.formatInputText();
+  //   const newInputText = e.target.value;
+  //   const oldInputText = this.formatInputText();
 
-    this.setState((state, props) => {
+  //   this.setState((state, props) => {
 
-      const modifiedIndex = oldInputText.split('').findIndex((c, i) => c !== newInputText[i]);
+  //     const modifiedIndex = oldInputText.split('').findIndex((c, i) => c !== newInputText[i]);
 
-      if (newInputText.length < oldInputText.length) {
-        state.inputText.splice(modifiedIndex, 1);
-      } else if (newInputText.length > oldInputText.length && modifiedIndex > -1) {
-        const char = newInputText.split('')[modifiedIndex];
-        state.inputText.splice(modifiedIndex, 0, { char: char, uuid: uuidv4() });
-      } else {
-        const char = newInputText.split('').pop();
-        state.inputText.push({ char: char, uuid: uuidv4() });
-      }
+  //     if (newInputText.length < oldInputText.length) {
+  //       state.inputText.splice(modifiedIndex, 1);
+  //     } else if (newInputText.length > oldInputText.length && modifiedIndex > -1) {
+  //       const char = newInputText.split('')[modifiedIndex];
+  //       state.inputText.splice(modifiedIndex, 0, { char: char, uuid: uuidv4() });
+  //     } else {
+  //       const char = newInputText.split('').pop();
+  //       state.inputText.push({ char: char, uuid: uuidv4() });
+  //     }
       
-      return state;
+  //     return state;
  
-    });
+  //   });
   
-  };
+  // };
 
-  formatInputText = () => {
-    return this.state.inputText.map(text => text.char).join('');
-  };
+  // formatInputText = () => {
+  //   return this.state.inputText.map(text => text.char).join('');
+  // };
 
-  handleRemoveChar = uuid => {
+  handleInputTextChange = e => {
+    const text = e.target.value;
     this.setState((state, props) => {
-      state.inputText = state.inputText.filter(text => text.uuid !== uuid);
+      state.inputText = text;
+      return state;
+    });
+  };
+
+  handleRemoveChar = i => {
+    this.setState((state, props) => {
+      state.inputText = state.inputText.split('').splice(i, 1).join('');
       return state;
     });
   };
 
   render() {
 
-    const charList = this.state.inputText.map(text => (
-      <CharBox key={text.uuid} char={text.char} uuid={text.uuid} handleRemoveChar={this.handleRemoveChar} />
+    const charList = this.state.inputText.split('').map((text, i) => (
+      <CharBox key={uuidv4()} char={text} i={i} handleRemoveChar={this.handleRemoveChar} />
     ));
 
     return (
@@ -70,7 +78,7 @@ class App extends React.Component {
         <h1 className="app__page-title">Assignment Two - React Complete Guide</h1>
         <div className="app__assignment-container">
           <ValidationBanner textLength={this.state.inputText.length} />
-          <input className="app__text-input" type="text" value={this.formatInputText()} onChange={this.handleInputTextChange} />
+          <input className="app__text-input" type="text" value={this.state.inputText} onChange={this.handleInputTextChange} />
           <p>Text length: {this.state.inputText.length}</p>
           <div className="char-list">
             {charList}

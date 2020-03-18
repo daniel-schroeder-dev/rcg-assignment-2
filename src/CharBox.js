@@ -5,7 +5,7 @@ import './CharBox.css';
 function CharBox(props) {
 
   function handleRemoveChar(e) {
-    props.handleRemoveChar(props.uuid);
+    props.handleRemoveChar(props.i);
   }
 
   return (
