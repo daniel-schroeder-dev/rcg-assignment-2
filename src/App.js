@@ -14,44 +14,6 @@ class App extends React.Component {
     };
   }
 
-  /*
-  *   There seem to be three situations to account for when the user
-  *   is interacting with the input text:
-  *
-  *   1. If they add an item to the end of the input
-  *   2. If the delete an item from anywhere in the input
-  *   3. If they add an item anywhere in the input besides the end
-  *
-  */
-  // handleInputTextChange = e => {
-    
-  //   const newInputText = e.target.value;
-  //   const oldInputText = this.formatInputText();
-
-  //   this.setState((state, props) => {
-
-  //     const modifiedIndex = oldInputText.split('').findIndex((c, i) => c !== newInputText[i]);
-
-  //     if (newInputText.length < oldInputText.length) {
-  //       state.inputText.splice(modifiedIndex, 1);
-  //     } else if (newInputText.length > oldInputText.length && modifiedIndex > -1) {
-  //       const char = newInputText.split('')[modifiedIndex];
-  //       state.inputText.splice(modifiedIndex, 0, { char: char, uuid: uuidv4() });
-  //     } else {
-  //       const char = newInputText.split('').pop();
-  //       state.inputText.push({ char: char, uuid: uuidv4() });
-  //     }
-      
-  //     return state;
- 
-  //   });
-  
-  // };
-
-  // formatInputText = () => {
-  //   return this.state.inputText.map(text => text.char).join('');
-  // };
-
   handleInputTextChange = e => {
     const text = e.target.value;
     this.setState((state, props) => {
@@ -62,7 +24,9 @@ class App extends React.Component {
 
   handleRemoveChar = i => {
     this.setState((state, props) => {
-      state.inputText = state.inputText.split('').splice(i, 1).join('');
+      state.inputText = state.inputText.split('')
+      state.inputText.splice(i, 1);
+      state.inputText = state.inputText.join('');
       return state;
     });
   };
